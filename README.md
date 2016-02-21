@@ -1,14 +1,29 @@
 # we-plugin-google-maps
 
-> [write something about your plugin here]
+> Plugin to add suport to google maps API in your App
 
-# API
+> This plugin add google maps javascript API and MarkerClusterer lib in you html page
 
+## Configuration
+
+```js
+// you local.js file
+    apiKeys: {
+      googleMaps: {
+        // set your api key here
+        key: null
+      }
+    },
+    googleMaps: {
+      loadMarkerClustererLib: true
+    }
+// ...
+```
 
 ## Links
 
 > * We.js site: http://wejs.org
 
-#Copyright and license
+# License
 
-Copyright 2013-2015 [your name] <[your email@email]> and contributors , under [the MIT license](LICENSE).
+Under [the MIT license](https://github.com/wejs/we/blob/master/LICENSE.md).
