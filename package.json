@@ -1,7 +1,7 @@
 {
   "name": "we-plugin-google-maps",
   "description": "Plugin to add suport to google maps API in your App",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "plugin.js",
   "scripts": {
     "prepublish": "npm prune"
