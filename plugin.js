@@ -32,11 +32,13 @@ module.exports = function loadPlugin(projectPath, Plugin) {
         '></script>';
       }
 
-      data.html.text += '<script async defer '+
-        'src="https://maps.googleapis.com/maps/api/js?key='+we.config.apiKeys.googleMaps.key+'&callback=initMap"'+
+      data.html.text += '<script '+
+        'src="https://maps.googleapis.com/maps/api/js?key='+we.config.apiKeys.googleMaps.key+'"'+
       '></script>';
     }
   });
+
+
 
   return plugin;
 };
