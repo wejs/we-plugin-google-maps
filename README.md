@@ -21,6 +21,10 @@ We.js plugin to add suport to google maps API in your App
 // ...
 ```
 
+## Form fields
+
+`google-maps-coords-picker`
+
 ## Links
 
 > * We.js site: http://wejs.org
