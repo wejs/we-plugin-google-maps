@@ -15,7 +15,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     },
     googleMaps: {
       loadMarkerClustererLib: true,
-      libraries: null
+      libraries: 'places'
     }
   });
 
@@ -37,6 +37,11 @@ module.exports = function loadPlugin(projectPath, Plugin) {
         )+'"'+
       '></script>';
     }
+  });
+
+  plugin.addJs('locationpicker.jquery', {
+    type: 'plugin', weight: 11, pluginName: 'we-plugin-google-maps',
+    path: 'files/public/locationpicker.jquery.js'
   });
 
   return plugin;

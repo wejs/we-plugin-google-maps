@@ -1,0 +1,84 @@
+<div class="form-group google-maps-coords-picker {{#if error}}has-error has-feedback{{/if}}">
+  <label for="{{fieldId}}">{{t fieldName}} {{#ifCond field.allowNull false}}*{{/ifCond}}</label>
+
+  <p class="help-block">{{t help}}</p>
+
+  <div class="row">
+    <div class="col col-md-6">
+      <div id="{{fieldId}}-map" style="width: 100%; height: 400px;"></div>
+    </div>
+    <div class="col col-md-6">
+
+      <div class="form container-fluid">
+        <div class="form-group">
+          <strong class="control-label">{{t 'Country'}}:</strong>
+          <span id="{{fieldId}}-country-t"></span>
+          <input id="{{fieldId}}-country" type="hidden">
+        </div>
+        <div class="form-group">
+          <strong class="control-label">{{t 'State.or.Province'}}:</strong>
+          <span id="{{fieldId}}-state-t"></span>
+          <input id="{{fieldId}}-state" type="hidden">
+        </div>
+        <div class="form-group">
+          <strong>{{t 'City'}}:</strong>
+          <span id="{{fieldId}}-city-t"></span>
+          <input id="{{fieldId}}-city" type="hidden">
+        </div>
+        <div class="form-group">
+          <strong>{{t 'Street'}}:</strong>
+          <span id="{{fieldId}}-street-t"></span>
+          <input id="{{fieldId}}-street" type="hidden">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <input id="{{fieldId}}" name="{{name}}" type="text" class="form-control" placeholder="{{t placeholder}}" {{{fieldAttrs}}} value="{{value}}">
+
+  {{{field-help-error error}}}
+
+  <input id="{{fieldId}}-radius" name="radius" value="{{values.radius}}" type="hidden">
+  <input id="{{fieldId}}-lat" name="latitude" value="{{values.longitude}}" type="hidden">
+  <input id="{{fieldId}}-long" name="longitude" value="{{values.latitude}}" type="hidden">
+</div>
+
+<script>
+$(function(){
+  function updateControls(addressComponents) {
+    $('#{{fieldId}}-street').val(addressComponents.addressLine1);
+    $('#{{fieldId}}-city').val(addressComponents.city);
+    $('#{{fieldId}}-state').val(addressComponents.stateOrProvince);
+    $('#{{fieldId}}-country').val(addressComponents.country);
+
+    $('#{{fieldId}}-street-t').text(addressComponents.addressLine1);
+    $('#{{fieldId}}-city-t').text(addressComponents.city);
+    $('#{{fieldId}}-state-t').text(addressComponents.stateOrProvince);
+    $('#{{fieldId}}-country-t').text(addressComponents.country);
+  }
+
+  $('#{{fieldId}}-map').locationpicker({
+    location: {
+      latitude: {{values.latitude}}, longitude: {{values.longitude}}
+    },
+    radius: 300,
+    enableAutocomplete: true,
+    inputBinding: {
+      latitudeInput: $('#{{fieldId}}-lat'),
+      longitudeInput: $('#{{fieldId}}-long'),
+      radiusInput: $('#{{fieldId}}-radius'),
+      locationNameInput: $('#{{fieldId}}')
+    },
+    onchanged: function onchanged(currentLocation, radius, isMarkerDropped) {
+      var addressComponents = $(this).locationpicker('map').location.addressComponents;
+      updateControls(addressComponents);
+    },
+    oninitialized: function oninitialized(component) {
+      var addressComponents = $(component).locationpicker('map').location.addressComponents;
+      updateControls(addressComponents);
+    }
+  });
+});
+</script>
