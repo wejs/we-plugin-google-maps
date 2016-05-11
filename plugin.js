@@ -14,18 +14,17 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       }
     },
     googleMaps: {
-      loadMarkerClustererLib: true
+      loadMarkerClustererLib: true,
+      libraries: null
     }
   });
 
   plugin.events.on('we-html-body-end', function (data) {
     var we = data.we;
 
-    if (!we.config.apiKeys.googleMaps.key) {
+    if (!we.config.apiKeys.googleMaps) {
       data.we.log.warn('Google maps api key is required for we-plugin-google-maps');
     } else {
-      we.config.apiKeys.googleMaps.key = 'AIzaSyCkdl_5kJuofUhPMYjfozpnWWbsRYo7KWU'
-
       if (we.config.googleMaps.loadMarkerClustererLib) {
         data.html.text += '<script '+
           'src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"'+
@@ -33,12 +32,12 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       }
 
       data.html.text += '<script '+
-        'src="https://maps.googleapis.com/maps/api/js?key='+we.config.apiKeys.googleMaps.key+'"'+
+        'src="https://maps.googleapis.com/maps/api/js?key='+we.config.apiKeys.googleMaps+(
+          (we.config.googleMaps.libraries)? '&libraries='+we.config.googleMaps.libraries : ''
+        )+'"'+
       '></script>';
     }
   });
-
-
 
   return plugin;
 };

@@ -15,7 +15,8 @@
       }
     },
     googleMaps: {
-      loadMarkerClustererLib: true
+      loadMarkerClustererLib: true,
+      libraries: 'places' // default null
     }
 // ...
 ```
