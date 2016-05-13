@@ -1,6 +1,8 @@
 <div class="form-group google-maps-coords-picker {{#if error}}has-error has-feedback{{/if}}">
   <label for="{{fieldId}}">{{t fieldName}} {{#ifCond field.allowNull false}}*{{/ifCond}}</label>
 
+  <input id="{{fieldId}}" name="{{name}}" type="text" class="form-control" placeholder="{{t placeholder}}" {{{fieldAttrs}}} value="{{value}}">
+
   <p class="help-block">{{t help}}</p>
 
   <div class="row">
@@ -34,10 +36,6 @@
     </div>
   </div>
 
-  <br>
-
-  <input id="{{fieldId}}" name="{{name}}" type="text" class="form-control" placeholder="{{t placeholder}}" {{{fieldAttrs}}} value="{{value}}">
-
   {{{field-help-error error}}}
 
   <input id="{{fieldId}}-radius" name="radius" value="{{values.radius}}" type="hidden">
@@ -60,9 +58,12 @@ $(function(){
   }
 
   $('#{{fieldId}}-map').locationpicker({
+    {{#if values.latitude}}{{#if values.longitude}}
     location: {
-      latitude: {{values.latitude}}, longitude: {{values.longitude}}
+      latitude: {{values.latitude}},
+      longitude: {{values.longitude}}
     },
+    {{/if}}{{/if}}
     radius: 150,
     enableAutocomplete: true,
     inputBinding: {
