@@ -1,20 +1,14 @@
 {
   "name": "we-plugin-google-maps",
   "description": "Plugin to add suport to google maps API in your App",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "main": "plugin.js",
-  "scripts": {
-    "prepublish": "npm prune"
-  },
   "dependencies": {},
-  "devDependencies": {},
-  "publishConfig": {
-    "registry": "http://registry.npmjs.org"
-  },
   "license": "MIT",
-  "author": "Alberto Souza <alberto.souza.dev@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:wejs/we-plugin-google-maps.git"
-  }
+  "author": "Alberto Souza <contato@albertosouza.net>",
+  "repository": "wejs/we-plugin-google-maps",
+  "keywords": [
+    "wejs-plugin"
+  ],
+  "wejs": {}
 }

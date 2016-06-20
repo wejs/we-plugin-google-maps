@@ -2,7 +2,13 @@
 
 We.js plugin to add suport to google maps API in your App
 
-> This plugin add google maps javascript API and MarkerClusterer lib in you html page
+This plugin add google maps javascript API and MarkerClusterer lib in you html page
+
+## Installation
+
+```sh
+we i we-plugin-google-maps
+```
 
 ## Configuration
 
